@@ -38,4 +38,7 @@ public class ActionResponse {
     return success;
   }
 
+  public String getMessage() {
+    return message;
+  }
 }
