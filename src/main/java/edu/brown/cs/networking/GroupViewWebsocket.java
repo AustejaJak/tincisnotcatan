@@ -47,7 +47,6 @@ public class GroupViewWebsocket {
         return;
       }
     }
-    return; // ignore all messages;
   }
 
 
