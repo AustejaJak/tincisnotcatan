@@ -119,22 +119,25 @@ public final class GCT {
 
 
   private void refreshGroups() {
-    for (Group g : full) {
-      if (g.isEmpty()) {
-        full.remove(g);
-      } else if (!g.isFull()) {
-        full.remove(g);
+    full.removeIf(g -> {
+      if (g.isEmpty())
+        return true;
+      else if (!g.isFull()) {
         pending.add(g);
+        return true;
       }
-    }
-    for (Group g : pending) {
-      if (g.isEmpty()) {
-        pending.remove(g);
-      } else if (g.isFull()) {
-        pending.remove(g);
+      return false;
+    });
+
+    pending.removeIf(g -> {
+      if (g.isEmpty())
+        return true;
+      else if (g.isFull()) {
         full.add(g);
+        return true;
       }
-    }
+      return false;
+    });
   }
 
 
