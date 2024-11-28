@@ -83,7 +83,7 @@ public class CatanNode implements Node<Path, Intersection> {
     if (obj == null) {
       return false;
     }
-    if (getClass() != obj.getClass()) {
+    if (!(obj instanceof CatanNode)) {
       return false;
     }
     CatanNode other = (CatanNode) obj;

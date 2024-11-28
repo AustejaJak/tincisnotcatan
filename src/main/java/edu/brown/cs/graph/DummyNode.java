@@ -89,7 +89,7 @@ class DummyNode implements Node<Integer, Integer> {
     if (obj == null) {
       return false;
     }
-    if (getClass() != obj.getClass()) {
+    if (!(obj instanceof DummyNode)) {
       return false;
     }
     DummyNode other = (DummyNode) obj;

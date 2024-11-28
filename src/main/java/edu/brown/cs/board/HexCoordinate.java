@@ -65,7 +65,7 @@ public class HexCoordinate {
     if (obj == null) {
       return false;
     }
-    if (getClass() != obj.getClass()) {
+    if (!(obj instanceof HexCoordinate)) {
       return false;
     }
     HexCoordinate other = (HexCoordinate) obj;

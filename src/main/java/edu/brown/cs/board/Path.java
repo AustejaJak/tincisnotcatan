@@ -58,10 +58,10 @@ public class Path {
     if (obj == null) {
       return false;
     }
-    if (getClass() != obj.getClass()) {
+    if (!(obj instanceof Path)) {
       return false;
+      Path other = (Path) obj;
     }
-    Path other = (Path) obj;
     if (_end == null || _start == null) {
       if (other._end != null || other._start != null) {
         return false;

@@ -36,7 +36,7 @@ public class CatanEdge extends Edge<Path, Intersection> {
     if (obj == null) {
       return false;
     }
-    if (getClass() != obj.getClass()) {
+    if (!(obj instanceof CatanEdge)) {
       return false;
     }
     CatanEdge other = (CatanEdge) obj;

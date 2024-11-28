@@ -147,7 +147,7 @@ public class PlaceRoad implements FollowUpAction {
       return true;
     if (obj == null)
       return false;
-    if (getClass() != obj.getClass())
+    if (!(obj instanceof PlaceRoad))
       return false;
     PlaceRoad other = (PlaceRoad) obj;
     if (_playerID != other._playerID)

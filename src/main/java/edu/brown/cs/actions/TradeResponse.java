@@ -188,7 +188,7 @@ public class TradeResponse implements FollowUpAction {
       return true;
     if (obj == null)
       return false;
-    if (getClass() != obj.getClass())
+    if (!(obj instanceof TradeResponse))
       return false;
     TradeResponse other = (TradeResponse) obj;
     if (_playerID != other._playerID)

@@ -183,7 +183,7 @@ public class ReviewTrade implements FollowUpAction {
       return true;
     if (obj == null)
       return false;
-    if (getClass() != obj.getClass())
+    if (!(obj instanceof ReviewTrade))
       return false;
     ReviewTrade other = (ReviewTrade) obj;
     if (_playerID != other._playerID)
