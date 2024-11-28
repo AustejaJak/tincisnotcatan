@@ -23,6 +23,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.google.common.collect.ImmutableList;
+
 import edu.brown.cs.catan.GameSettings;
 import edu.brown.cs.catan.Player;
 import edu.brown.cs.catan.Settings;
@@ -208,7 +210,7 @@ public class Board {
    */
   public Board(GameSettings settings) {
     List<TileType> availTiles = new ArrayList<TileType>();
-    int[] rollNums = ROLL_NUMS;
+    ImmutableList<Integer> rollNums = ROLL_NUMS;
     // Determines whether the board should be random or not;
     if (settings.isStandard) {
       availTiles = standardBoard();
@@ -304,7 +306,7 @@ public class Board {
       Tile seaTile = new Tile(hc, SEA, _intersections);
       if (PORT_LOCATION.contains(hc)) {
         seaTile.setPorts(new Port(
-            Settings.PORT_ORDER[PORT_LOCATION.indexOf(hc)]));
+            Settings.PORT_ORDER.get(PORT_LOCATION.indexOf(hc))));
         i++;
       }
       _tiles.add(seaTile);
@@ -325,9 +327,9 @@ public class Board {
   private int addTile(TileType tileType, HexCoordinate coord,
       Map<IntersectionCoordinate, Intersection> intersections,
       Map<PathCoordinate, Path> paths, Integer currRoll, Integer currTile,
-      int[] rollNums) {
+      ImmutableList<Integer> rollNums) {
     if (tileType != DESERT) {
-      _tiles.add(new Tile(rollNums[currRoll], coord, intersections, paths,
+      _tiles.add(new Tile(rollNums.get(currRoll), coord, intersections, paths,
           tileType));
       return currRoll + 1;
     } else {

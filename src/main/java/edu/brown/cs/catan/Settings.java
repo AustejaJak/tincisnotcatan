@@ -2,6 +2,7 @@ package edu.brown.cs.catan;
 
 import java.util.Map;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 
 /**
@@ -16,10 +17,10 @@ public abstract class Settings {
   public final static int INITIAL_CITIES = 4;
 
   // Numbers on the board:
-  public final static int[] ROLL_NUMS = { 5, 2, 6, 3, 8, 10, 9, 12, 11, 4, 8,
-      10, 9, 4, 5, 6, 3, 11 };
-  public final static int[] STANDARD_ROLL_NUMS = { 9, 12, 11, 4, 8, 5, 2, 6, 3,
-      8, 10, 5, 6, 3, 10, 9, 4, 11 };
+  public final static ImmutableList<Integer> ROLL_NUMS = ImmutableList.of( 5, 2, 6, 3, 8, 10, 9, 12, 11, 4, 8,
+      10, 9, 4, 5, 6, 3, 11 );
+  public final static ImmutableList<Integer> STANDARD_ROLL_NUMS = ImmutableList.of( 9, 12, 11, 4, 8, 5, 2, 6, 3,
+      8, 10, 5, 6, 3, 10, 9, 4, 11 );
 
   // Number of each tile type on the board:
   public final static int NUM_WOOD_TILE = 4;
@@ -53,9 +54,9 @@ public abstract class Settings {
       .put(Resource.WILDCARD, 3.0).build();
 
   // Port Resource Order
-  public final static Resource[] PORT_ORDER = { Resource.WILDCARD,
+  public final static ImmutableList<Resource> PORT_ORDER = ImmutableList.of( Resource.WILDCARD,
       Resource.SHEEP, Resource.WILDCARD, Resource.WHEAT, Resource.BRICK,
-      Resource.WILDCARD, Resource.ORE, Resource.WILDCARD, Resource.WOOD };
+      Resource.WILDCARD, Resource.ORE, Resource.WILDCARD, Resource.WOOD );
 
   // Development Card Deck:
   public final static int NUM_KNIGHTS = 14;
