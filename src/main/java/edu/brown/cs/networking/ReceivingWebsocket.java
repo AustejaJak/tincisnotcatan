@@ -167,7 +167,12 @@ public class ReceivingWebsocket {
           .println("Message from user we've never seen before. Ignoring.");
       return; // do nothing with an unfamiliar session
     }
-    threadPool.submit(new MessageUserTask(u, msg, gct));
+    Future<?> f = threadPool.submit(new MessageUserTask(u, msg, gct));
+    try {
+      f.get();
+    } catch (InterruptedException | ExecutionException e) {
+      e.printStackTrace();
+    }
   }
 
 
