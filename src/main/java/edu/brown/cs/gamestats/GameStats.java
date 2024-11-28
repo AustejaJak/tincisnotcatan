@@ -12,7 +12,6 @@ import java.util.Map;
 public class GameStats {
 
   private Map<Integer, Integer> _rolls;
-  private boolean _cheatingUsed = false;
 
   GameStats() {
     _rolls = new HashMap<>();
@@ -41,9 +40,4 @@ public class GameStats {
     rolls[10] = _rolls.containsKey(12) ? _rolls.get(12) : 0;
     return rolls;
   }
-
-  public void usedCheating() {
-    _cheatingUsed = true;
-  }
-
 }

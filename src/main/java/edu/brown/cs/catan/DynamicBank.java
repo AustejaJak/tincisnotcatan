@@ -109,7 +109,7 @@ public class DynamicBank implements Bank {
     return _supply.get(res) / getExpectation(res);
   }
 
-  private double getExpectation(Resource res) {
+  private double getExpectation(Resource unused_res) {
     return EXPECTATION;
   }
 

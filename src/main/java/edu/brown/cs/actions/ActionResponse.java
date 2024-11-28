@@ -1,5 +1,7 @@
 package edu.brown.cs.actions;
 
+import com.google.errorprone.annotations.Keep;
+
 /**
  * General form for reponse from Actions.
  *
@@ -10,7 +12,6 @@ public class ActionResponse {
 
   private boolean success;
   private String message;
-  private Object data;
 
   /**
    * Constructor for the class.
@@ -26,7 +27,6 @@ public class ActionResponse {
     super();
     this.success = success;
     this.message = message;
-    this.data = data;
   }
 
   /**

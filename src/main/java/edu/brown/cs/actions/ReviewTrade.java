@@ -3,6 +3,7 @@ package edu.brown.cs.actions;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.google.errorprone.annotations.Keep;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -117,9 +118,9 @@ public class ReviewTrade implements FollowUpAction {
   }
 
   private class ReviewTradeResponse {
-    private boolean acceptedTrade;
-    private boolean allDeclined;
-    private Map<Resource, Double> resources;
+    @Keep private boolean acceptedTrade;
+    @Keep private boolean allDeclined;
+    @Keep private Map<Resource, Double> resources;
 
     public ReviewTradeResponse(boolean acceptedTrade, boolean allDeclined,
         Map<Resource, Double> resources) {

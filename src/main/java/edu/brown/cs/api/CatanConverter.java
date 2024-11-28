@@ -29,6 +29,8 @@ import edu.brown.cs.catan.Referee;
 import edu.brown.cs.catan.Referee.GameStatus;
 import edu.brown.cs.catan.Resource;
 
+import com.google.errorprone.annotations.Keep;
+
 public class CatanConverter {
 
   private Gson _gson;
@@ -61,16 +63,16 @@ public class CatanConverter {
   }
 
   private static class GameState {
-    private int playerID;
-    private List<Integer> turnOrder;
-    private Integer winner;
-    private Hand hand;
-    private BoardRaw board;
-    private int currentTurn;
-    private FollowUpActionRaw followUp;
-    private Collection<PublicPlayerRaw> players;
-    private GameSettings settings;
-    private GameStatsRaw stats;
+    @Keep private int playerID;
+    @Keep private List<Integer> turnOrder;
+    @Keep private Integer winner;
+    @Keep private Hand hand;
+    @Keep private BoardRaw board;
+    @Keep private int currentTurn;
+    @Keep private FollowUpActionRaw followUp;
+    @Keep private Collection<PublicPlayerRaw> players;
+    @Keep private GameSettings settings;
+    @Keep private GameStatsRaw stats;
 
     public GameState(Referee ref, int playerID) {
       this.playerID = playerID;
@@ -113,12 +115,12 @@ public class CatanConverter {
   }
 
   private static class Hand {
-    private final Map<Resource, Double> resources;
-    private final Map<DevelopmentCard, Integer> devCards;
-    private boolean canBuildRoad;
-    private boolean canBuildSettlement;
-    private boolean canBuildCity;
-    private boolean canBuyDevCard;
+    @Keep private final Map<Resource, Double> resources;
+    @Keep private final Map<DevelopmentCard, Integer> devCards;
+    @Keep private boolean canBuildRoad;
+    @Keep private boolean canBuildSettlement;
+    @Keep private boolean canBuildCity;
+    @Keep private boolean canBuyDevCard;
 
     public Hand(Player player) {
       resources = player.getResources();
@@ -153,10 +155,10 @@ public class CatanConverter {
   }
 
   public static class PathRaw {
-    private IntersectionCoordinate start;
-    private IntersectionCoordinate end;
-    private RoadRaw road;
-    private boolean canBuildRoad;
+    @Keep private IntersectionCoordinate start;
+    @Keep private IntersectionCoordinate end;
+    @Keep private RoadRaw road;
+    @Keep private boolean canBuildRoad;
 
     public PathRaw(Referee ref, Path path, int playerID) {
       start = path.getStart().getPosition();
@@ -170,7 +172,7 @@ public class CatanConverter {
   }
 
   private static class RoadRaw {
-    private int player;
+    @Keep private int player;
 
     public RoadRaw(Road road) {
       player = road.getPlayer().getID();
@@ -179,8 +181,8 @@ public class CatanConverter {
 
   private static class BuildingRaw implements Building {
 
-    private int player;
-    private final String type;
+    @Keep private int player;
+    @Keep private final String type;
 
     BuildingRaw(Building building) {
       if (building.getPlayer() != null) {
@@ -206,10 +208,10 @@ public class CatanConverter {
 
   private static class IntersectionRaw {
 
-    private final BuildingRaw building;
-    private final Port port;
-    private final IntersectionCoordinate coordinate;
-    private final boolean canBuildSettlement;
+    @Keep private final BuildingRaw building;
+    @Keep private final Port port;
+    @Keep private final IntersectionCoordinate coordinate;
+    @Keep private final boolean canBuildSettlement;
 
     IntersectionRaw(Intersection i, Referee ref, int playerID) {
       building = i.getBuilding() != null ? new BuildingRaw(i.getBuilding())
@@ -222,12 +224,12 @@ public class CatanConverter {
   }
 
   private static class TileRaw {
-    private final HexCoordinate hexCoordinate;
-    private final TileType type;
-    private final boolean hasRobber;
-    private final int number;
-    private final List<IntersectionCoordinate> portLocations;
-    private final Resource portType;
+    @Keep private final HexCoordinate hexCoordinate;
+    @Keep private final TileType type;
+    @Keep private final boolean hasRobber;
+    @Keep private final int number;
+    @Keep private final List<IntersectionCoordinate> portLocations;
+    @Keep private final Resource portType;
 
     public TileRaw(BoardTile tile) {
       hexCoordinate = tile.getCoordinate();
@@ -240,19 +242,19 @@ public class CatanConverter {
   }
 
   private static class PublicPlayerRaw {
-    private String name;
-    private int id;
-    private String color;
-    private int numSettlements;
-    private int numCities;
-    private int numPlayedKnights;
-    private int numRoads;
-    private boolean longestRoad;
-    private boolean largestArmy;
-    private int victoryPoints;
-    private double numResourceCards;
-    private int numDevelopmentCards;
-    private Map<Resource, Double> rates;
+    @Keep private String name;
+    @Keep private int id;
+    @Keep private String color;
+    @Keep private int numSettlements;
+    @Keep private int numCities;
+    @Keep private int numPlayedKnights;
+    @Keep private int numRoads;
+    @Keep private boolean longestRoad;
+    @Keep private boolean largestArmy;
+    @Keep private int victoryPoints;
+    @Keep private double numResourceCards;
+    @Keep private int numDevelopmentCards;
+    @Keep private Map<Resource, Double> rates;
 
     public PublicPlayerRaw(Player p, Referee r) {
       name = p.getName();
@@ -273,8 +275,8 @@ public class CatanConverter {
   }
 
   private static class GameStatsRaw {
-    private int[] rolls;
-    private int turn;
+    @Keep private int[] rolls;
+    @Keep private int turn;
 
     GameStatsRaw(Referee ref){
       this.rolls = ref.getGameStats().getRollsArray();
@@ -285,8 +287,8 @@ public class CatanConverter {
 
   private static class FollowUpActionRaw {
 
-    private String actionName;
-    private Object actionData;
+    @Keep private String actionName;
+    @Keep private Object actionData;
 
     public FollowUpActionRaw(FollowUpAction followUp) {
       actionName = followUp.getID();

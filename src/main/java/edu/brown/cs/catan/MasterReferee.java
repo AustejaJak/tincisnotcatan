@@ -91,7 +91,7 @@ public class MasterReferee implements Referee {
     return _setup;
   }
 
-  private List<Integer> initializeTurnOrder(int numFullPlayers) {
+  private List<Integer> initializeTurnOrder(int unused_numFullPlayers) {
     List<Integer> toReturn = new ArrayList<>();
     for (int i = 0; i < _gameSettings.numPlayers; i++) {
       toReturn.add(i);
