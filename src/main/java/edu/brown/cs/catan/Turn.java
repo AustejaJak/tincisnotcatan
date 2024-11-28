@@ -112,7 +112,7 @@ public class Turn {
     Collection<FollowUpAction> curr = _followUps.get(0);
     curr.remove(action);
     if (curr.isEmpty()) {
-      _followUps.remove(curr);
+      _followUps.remove(0);
     }
   }
 
