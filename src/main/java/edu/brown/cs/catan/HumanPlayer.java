@@ -352,7 +352,7 @@ public class HumanPlayer implements Player {
    * data.
    *
    */
-  private class ReadOnlyPlayer implements Player {
+  private static class ReadOnlyPlayer implements Player {
 
     private final HumanPlayer _player;
 

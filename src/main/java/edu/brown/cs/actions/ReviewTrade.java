@@ -117,7 +117,7 @@ public class ReviewTrade implements FollowUpAction {
     return toRet;
   }
 
-  private class ReviewTradeResponse {
+  private static class ReviewTradeResponse {
     @Keep private boolean acceptedTrade;
     @Keep private boolean allDeclined;
     @Keep private Map<Resource, Double> resources;

@@ -253,7 +253,7 @@ public class UserGroup implements Group {
   }
 
 
-  public class CleanupTask implements Runnable {
+  public static class CleanupTask implements Runnable {
 
     private User      u;
     private UserTable table;
