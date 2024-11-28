@@ -147,6 +147,7 @@ public class UserGroup implements Group {
   /**
    * {@inheritDoc}
    */
+  @Override
   public boolean hasUser(User u) {
     boolean ret = table.contains(u);
     System.out.println("hasUser? : " + ret);
@@ -157,6 +158,7 @@ public class UserGroup implements Group {
   /**
    * {@inheritDoc}
    */
+  @Override
   public boolean hasUser(String id) {
     return table.contains(id);
   }
