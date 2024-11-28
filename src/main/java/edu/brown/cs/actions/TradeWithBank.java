@@ -63,7 +63,7 @@ public class TradeWithBank implements Action {
     }
     if (!_ref.currentPlayer().equals(_player)) {
       String message = String.format(
-          "You can only trade with the bank on your turn", _toGive.toString());
+          "You can only trade with the bank on your turn");
       return ImmutableMap.of(_player.getID(), new ActionResponse(false,
           message, null));
     }
