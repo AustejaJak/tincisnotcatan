@@ -66,33 +66,33 @@ public class Board {
    */
   private List<HexCoordinate> getSeaPermutations() {
     List<HexCoordinate> coords = new ArrayList<HexCoordinate>();
-    int[] oneThree = { 0, 0, 3 };
-    int[] oneThreeOneTwo = { 0, 2, 3 };
-    int[] oneThreeOneOne = { 0, 1, 3 };
-    int[] twoThree = { 0, 3, 3 };
+    int[] oneThreeCoords = { 0, 0, 3 };
+    int[] oneThreeOneTwoCoords = { 0, 2, 3 };
+    int[] oneThreeOneOneCoords = { 0, 1, 3 };
+    int[] twoThreeCoords = { 0, 3, 3 };
 
-    coords.add(new HexCoordinate(oneThree[0], oneThree[1], oneThree[2]));
-    while (permute(oneThree)) {
-      coords.add(new HexCoordinate(oneThree[0], oneThree[1], oneThree[2]));
+    coords.add(new HexCoordinate(oneThreeCoords[0], oneThreeCoords[1], oneThreeCoords[2]));
+    while (permute(oneThreeCoords)) {
+      coords.add(new HexCoordinate(oneThreeCoords[0], oneThreeCoords[1], oneThreeCoords[2]));
     }
 
-    coords.add(new HexCoordinate(oneThreeOneTwo[0], oneThreeOneTwo[1],
-        oneThreeOneTwo[2]));
-    while (permute(oneThreeOneTwo)) {
-      coords.add(new HexCoordinate(oneThreeOneTwo[0], oneThreeOneTwo[1],
-          oneThreeOneTwo[2]));
+    coords.add(new HexCoordinate(oneThreeOneTwoCoords[0], oneThreeOneTwoCoords[1],
+        oneThreeOneTwoCoords[2]));
+    while (permute(oneThreeOneTwoCoords)) {
+      coords.add(new HexCoordinate(oneThreeOneTwoCoords[0], oneThreeOneTwoCoords[1],
+          oneThreeOneTwoCoords[2]));
     }
 
-    coords.add(new HexCoordinate(oneThreeOneOne[0], oneThreeOneOne[1],
-        oneThreeOneOne[2]));
-    while (permute(oneThreeOneOne)) {
-      coords.add(new HexCoordinate(oneThreeOneOne[0], oneThreeOneOne[1],
-          oneThreeOneOne[2]));
+    coords.add(new HexCoordinate(oneThreeOneOneCoords[0], oneThreeOneOneCoords[1],
+        oneThreeOneOneCoords[2]));
+    while (permute(oneThreeOneOneCoords)) {
+      coords.add(new HexCoordinate(oneThreeOneOneCoords[0], oneThreeOneOneCoords[1],
+          oneThreeOneOneCoords[2]));
     }
 
-    coords.add(new HexCoordinate(twoThree[0], twoThree[1], twoThree[2]));
-    while (permute(twoThree)) {
-      coords.add(new HexCoordinate(twoThree[0], twoThree[1], twoThree[2]));
+    coords.add(new HexCoordinate(twoThreeCoords[0], twoThreeCoords[1], twoThreeCoords[2]));
+    while (permute(twoThreeCoords)) {
+      coords.add(new HexCoordinate(twoThreeCoords[0], twoThreeCoords[1], twoThreeCoords[2]));
     }
     return coords;
   }
@@ -100,34 +100,34 @@ public class Board {
   /**
    * Returns true if there are possible permutations of the array.
    *
-   * @param data
+   * @param coords
    *          Array to permute
    * @return Boolean stating if there are more permutations
    */
-  private boolean permute(int[] data) {
-    int k = data.length - 2;
-    while (data[k] >= data[k + 1]) {
+  private boolean permute(int[] coords) {
+    int k = coords.length - 2;
+    while (coords[k] >= coords[k + 1]) {
       k--;
       if (k < 0) {
         return false;
       }
     }
-    int l = data.length - 1;
-    while (data[k] >= data[l]) {
+    int l = coords.length - 1;
+    while (coords[k] >= coords[l]) {
       l--;
     }
-    swap(data, k, l);
-    int length = data.length - (k + 1);
+    swap(coords, k, l);
+    int length = coords.length - (k + 1);
     for (int i = 0; i < length / 2; i++) {
-      swap(data, k + 1 + i, data.length - i - 1);
+      swap(coords, k + 1 + i, coords.length - i - 1);
     }
     return true;
   }
 
-  private void swap(int[] data, int idx1, int idx2) {
-    int tmp = data[idx1];
-    data[idx1] = data[idx2];
-    data[idx2] = tmp;
+  private void swap(int[] coords, int idx1, int idx2) {
+    int tmp = coords[idx1];
+    coords[idx1] = coords[idx2];
+    coords[idx2] = tmp;
   }
 
   /**
