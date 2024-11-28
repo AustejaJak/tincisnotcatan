@@ -29,6 +29,7 @@ import edu.brown.cs.catan.Referee;
 import edu.brown.cs.catan.Referee.GameStatus;
 import edu.brown.cs.catan.Resource;
 
+import com.google.common.base.Ascii;
 import com.google.errorprone.annotations.Keep;
 
 public class CatanConverter {
@@ -188,7 +189,7 @@ public class CatanConverter {
       if (building.getPlayer() != null) {
         player = building.getPlayer().getID();
       }
-      type = building.getClass().getSimpleName().toLowerCase();
+      type = Ascii.toLowerCase(building.getClass().getSimpleName());
     }
 
     @Override
