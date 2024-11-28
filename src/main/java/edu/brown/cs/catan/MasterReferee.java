@@ -102,7 +102,7 @@ public class MasterReferee implements Referee {
 
   @Override
   public void startNextTurn() {
-    Player nextPlayer = _players.get(_turnOrder.get((_turn.getTurnNum())
+    Player nextPlayer = _players.get(_turnOrder.get(_turn.getTurnNum()
         % _gameSettings.numPlayers));
 
     if (_gameStatus == GameStatus.PROGRESS) {

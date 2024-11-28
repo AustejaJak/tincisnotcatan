@@ -78,12 +78,12 @@ public class DynamicBank implements Bank {
 
   @Override
   public double getPortRate(Resource res) {
-    return Math.round((0.5) * getBankRate(res) * 10.0) / 10.0;
+    return Math.round(0.5 * getBankRate(res) * 10.0) / 10.0;
   }
 
   @Override
   public double getWildCardRate(Resource res) {
-    return Math.round((0.75) * getBankRate(res) * 10.0) / 10.0;
+    return Math.round(0.75 * getBankRate(res) * 10.0) / 10.0;
   }
 
   private double getRateFromProbit(double x) {

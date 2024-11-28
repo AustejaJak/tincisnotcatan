@@ -143,11 +143,11 @@ public class Tile implements BoardTile {
 
     // Add the two intersections closest to the origin
     IntersectionCoordinate toAdd = closestIntersections.poll();
-    assert (intersections.containsKey(toAdd));
+    assert intersections.containsKey(toAdd);
     _intersections.add(intersections.get(toAdd));
 
     toAdd = closestIntersections.poll();
-    assert (intersections.containsKey(toAdd));
+    assert intersections.containsKey(toAdd);
     _intersections.add(intersections.get(toAdd));
   }
 

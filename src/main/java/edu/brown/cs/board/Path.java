@@ -67,7 +67,7 @@ public class Path {
         return false;
       }
     }
-    if (((_end.equals(other._end) && _start.equals(other._start)))
+    if ((_end.equals(other._end) && _start.equals(other._start))
         || (_end.equals(other._start) && _start.equals(other._end))) {
       return true;
     }

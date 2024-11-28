@@ -84,7 +84,7 @@ public class HexCoordinate {
    * @return Double that is the x value of this point in the cartesian plane.
    */
   public double cartesianX() {
-    return (-0.5) * x + y + (-0.5) * z;
+    return -0.5 * x + y + -0.5 * z;
   }
 
   /**
