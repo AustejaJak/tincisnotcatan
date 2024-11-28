@@ -299,7 +299,6 @@ public class Board {
 
     _intersections = intersections;
     _paths = paths;
-    i = 0;
     List<HexCoordinate> seaCoords = getSeaPermutations();
     // Adds sea tiles and ports
     for (HexCoordinate hc : seaCoords) {
@@ -307,7 +306,6 @@ public class Board {
       if (PORT_LOCATION.contains(hc)) {
         seaTile.setPorts(new Port(
             Settings.PORT_ORDER.get(PORT_LOCATION.indexOf(hc))));
-        i++;
       }
       _tiles.add(seaTile);
     }
@@ -320,13 +318,13 @@ public class Board {
    * @param intersections
    * @param paths
    * @param currRoll
-   * @param currTile
+   * @param unused_CurrTile
    * @param rollNums
    * @return
    */
   private int addTile(TileType tileType, HexCoordinate coord,
       Map<IntersectionCoordinate, Intersection> intersections,
-      Map<PathCoordinate, Path> paths, Integer currRoll, Integer currTile,
+      Map<PathCoordinate, Path> paths, Integer currRoll, Integer unused_CurrTile,
       ImmutableList<Integer> rollNums) {
     if (tileType != DESERT) {
       _tiles.add(new Tile(rollNums.get(currRoll), coord, intersections, paths,
