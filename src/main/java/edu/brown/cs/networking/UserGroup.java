@@ -2,6 +2,7 @@ package edu.brown.cs.networking;
 
 import static edu.brown.cs.networking.Util.print;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -35,8 +36,8 @@ public class UserGroup implements Group {
 
     if (b.apiClass != null) {
       try {
-        this.api = b.apiClass.newInstance();
-      } catch (InstantiationException | IllegalAccessException e) {
+        this.api = b.apiClass.getConstructor().newInstance();
+      } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
         print("Error instantiating API class of type:" + b.apiClass.getName());
         e.printStackTrace();
       }
