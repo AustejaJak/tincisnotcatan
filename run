@@ -25,6 +25,16 @@ fi
 # Now, we set $CP to the contents of the .classpath file.
 CP=$(cat .mvn-classpath)
 
+# Enable JMX monitoring
+JMX_OPTS="-Dcom.sun.management.jmxremote=true \
+          -Djava.rmi.server.hostname=127.0.0.1 \
+          -Dcom.sun.management.jmxremote.port=9991 \
+          -Dcom.sun.management.jmxremote.ssl=false \
+          -Dcom.sun.management.jmxremote.registry.ssl=false \
+          -Dcom.sun.management.jmxremote.authenticate=false \
+          -Djava.net.preferIPv4Stack=true"
+
+
 # Again, we're trying to make the script more reusable by guessing the
 # package name from the current directory, instead of hard coding.
 # But this relies on some conventions in naming.  You'll have to call
@@ -34,9 +44,6 @@ CP=$(cat .mvn-classpath)
 
 PROJECT=$(basename "$(pwd)")
 
-# Find the package that Main is in. TAs use "staff", students should
-# rename it to their own username. In the file names and in the source!
-
 # The funny symbol: "$@" passes the command-line arguments on from
 # this script to your Java program.
-java -ea -cp $TARGET:$CP edu.brown.cs.catan.Main "$@"
+java -ea $JMX_OPTS -cp $TARGET:$CP edu.brown.cs.catan.Main "$@"
